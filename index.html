@@ -4,120 +4,272 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sakshi Goel — .NET Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f8f6f2;
-    --white: #ffffff;
-    --ink: #1c1a17;
-    --ink2: #6b6760;
-    --accent: #2d5a3d;
-    --accent-light: #e6efe9;
-    --accent-mid: #b8d4c0;
-    --border: #e3dfd9;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
 
+  :root {
+    --bg1: #0d0b1e;
+    --bg2: #1a0a2e;
+    --purple: #7c3aed;
+    --purple-light: #a78bfa;
+    --blue: #3b82f6;
+    --blue-light: #93c5fd;
+    --pink: #ec4899;
+    --white: #ffffff;
+    --white80: rgba(255,255,255,0.8);
+    --white60: rgba(255,255,255,0.6);
+    --white20: rgba(255,255,255,0.2);
+    --white10: rgba(255,255,255,0.08);
+    --glass-bg: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.12);
+    --glass-hover: rgba(255,255,255,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg1);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ANIMATED BACKGROUND */
+  .bg-orbs {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+  }
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35;
+    animation: float 8s ease-in-out infinite;
+  }
+  .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7c3aed, transparent); top: -200px; left: -200px; animation-delay: 0s; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6, transparent); top: 30%; right: -150px; animation-delay: -3s; }
+  .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent); bottom: 10%; left: 20%; animation-delay: -5s; }
+  .orb4 { width: 300px; height: 300px; background: radial-gradient(circle, #06b6d4, transparent); top: 60%; right: 30%; animation-delay: -2s; }
+  @keyframes float {
+    0%,100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-40px) scale(1.05); }
+  }
+
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(248,246,242,0.93); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
+    background: rgba(13,11,30,0.7); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 3rem; height: 62px;
+    padding: 0 3rem; height: 64px;
   }
-  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
+  .nav-logo {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    text-decoration: none; color: var(--white);
+    background: linear-gradient(135deg, var(--purple-light), var(--blue-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--white60); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
 
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 3rem 4rem; max-width: 1120px; margin: 0 auto; }
-  .hero-inner { max-width: 700px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; margin-bottom: 1.75rem; }
-  .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.08; margin-bottom: 1.5rem; color: var(--ink); }
-  h1 em { font-style: italic; color: var(--accent); }
-  .hero-desc { font-size: 1.1rem; color: var(--ink2); line-height: 1.75; max-width: 560px; margin-bottom: 2.5rem; }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
-  .btn-primary { background: var(--accent); color: white; padding: 0.8rem 1.8rem; border-radius: 7px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: background 0.2s, transform 0.15s; }
-  .btn-primary:hover { background: #1f4229; transform: translateY(-1px); }
-  .btn-outline { border: 1.5px solid var(--border); color: var(--ink); padding: 0.8rem 1.8rem; border-radius: 7px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: border-color 0.2s, transform 0.15s; }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--ink); display: block; }
-  .stat-label { font-size: 0.8rem; color: var(--ink2); }
+  /* GLASS CARD */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+  }
+  .glass:hover { background: var(--glass-hover); border-color: rgba(124,58,237,0.4); }
 
-  section { padding: 5rem 3rem; }
-  .container { max-width: 1120px; margin: 0 auto; }
-  .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
-  .sec-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--ink); margin-bottom: 3rem; line-height: 1.2; }
+  /* HERO */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 80px 3rem 4rem; max-width: 1200px; margin: 0 auto;
+  }
+  .hero-inner { max-width: 750px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4);
+    color: var(--purple-light); font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.4rem 1.1rem; border-radius: 20px; margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.9)} }
 
-  #about { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 6rem; align-items: start; }
-  .about-text p { color: var(--ink2); line-height: 1.8; margin-bottom: 1rem; font-size: 1rem; }
-  .info-table { display: flex; flex-direction: column; }
-  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
-  .info-row:first-child { border-top: 1px solid var(--border); }
-  .info-key { color: var(--ink2); }
-  .info-val { color: var(--ink); font-weight: 500; text-align: right; }
-  .pill { background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 500; padding: 0.2rem 0.65rem; border-radius: 20px; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.08; margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #93c5fd 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero h1 em { font-style: italic; }
+  .hero-desc { font-size: 1.1rem; color: var(--white60); line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; font-weight: 300; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
 
-  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .skill-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
-  .skill-card:hover { border-color: var(--accent-mid); transform: translateY(-2px); }
-  .skill-card-title { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .tag { background: var(--bg); border: 1px solid var(--border); padding: 0.22rem 0.6rem; border-radius: 4px; font-size: 0.8rem; color: var(--ink2); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    color: white; padding: 0.85rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+  }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-glass {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px); color: var(--white80);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.9rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-glass:hover { background: var(--glass-hover); transform: translateY(-2px); }
 
-  #projects { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
+  .stat-item {
+    padding: 1.5rem 2.5rem; text-align: center;
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+  }
+  .stat-item:first-child { border-radius: 12px 0 0 12px; }
+  .stat-item:last-child { border-radius: 0 12px 12px 0; }
+  .stat-item:not(:last-child) { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--purple-light), var(--blue-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    display: block;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--white60); margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; padding: 6rem 3rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--purple-light), var(--blue-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    margin-bottom: 3rem; color: var(--white); line-height: 1.2;
+  }
+  .sec-title em { font-style: italic; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--white60); line-height: 1.85; margin-bottom: 1rem; font-size: 1rem; font-weight: 300; }
+  .info-table { display: flex; flex-direction: column; gap: 0; }
+  .info-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 1.25rem; font-size: 0.85rem;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .info-row:first-child { border-top: 1px solid var(--glass-border); border-radius: 12px 12px 0 0; }
+  .info-row:last-child { border-radius: 0 0 12px 12px; }
+  .info-key { color: var(--white60); }
+  .info-val { color: var(--white); font-weight: 500; text-align: right; }
+  .status-pill {
+    background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
+    color: #4ade80; font-size: 0.75rem; font-weight: 500;
+    padding: 0.2rem 0.7rem; border-radius: 20px;
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .skill-card { padding: 1.5rem; transition: transform 0.2s; }
+  .skill-card:hover { transform: translateY(-3px); }
+  .skill-card-title {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--purple-light), var(--blue-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: rgba(255,255,255,0.07); border: 1px solid var(--glass-border);
+    padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.8rem; color: var(--white60);
+    transition: background 0.2s, color 0.2s;
+  }
+  .tag:hover { background: rgba(124,58,237,0.2); color: var(--purple-light); border-color: rgba(124,58,237,0.4); }
+
+  /* PROJECTS */
   .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-  .project-card { border: 1px solid var(--border); border-radius: 10px; padding: 1.75rem; background: var(--bg); display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; }
-  .project-card:hover { border-color: var(--accent-mid); transform: translateY(-2px); }
-  .project-card.featured { grid-column: span 2; border-color: var(--accent); background: var(--accent-light); }
+  .project-card { padding: 1.75rem; display: flex; flex-direction: column; transition: transform 0.2s; }
+  .project-card:hover { transform: translateY(-4px); }
+  .project-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.1));
+    border-color: rgba(124,58,237,0.3);
+  }
   .project-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; }
-  .project-name { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--ink); }
-  .live-badge { font-size: 0.75rem; color: var(--accent); font-weight: 500; border: 1px solid var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.2s, color 0.2s; }
-  .live-badge:hover { background: var(--accent); color: white; }
-  .project-desc { font-size: 0.875rem; color: var(--ink2); line-height: 1.65; margin-bottom: 1.25rem; flex: 1; }
+  .project-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); }
+  .live-badge {
+    font-size: 0.72rem; font-weight: 500;
+    background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
+    color: #4ade80; padding: 0.2rem 0.6rem; border-radius: 4px;
+    text-decoration: none; white-space: nowrap; transition: background 0.2s;
+  }
+  .live-badge:hover { background: rgba(74,222,128,0.25); }
+  .project-desc { font-size: 0.875rem; color: var(--white60); line-height: 1.65; margin-bottom: 1.25rem; flex: 1; font-weight: 300; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-  .project-tag { background: var(--white); border: 1px solid var(--border); padding: 0.2rem 0.55rem; border-radius: 4px; font-size: 0.78rem; color: var(--ink2); }
-  .project-link { font-size: 0.82rem; color: var(--ink2); text-decoration: none; margin-top: auto; transition: color 0.2s; }
-  .project-link:hover { color: var(--accent); }
+  .project-tag {
+    background: rgba(255,255,255,0.06); border: 1px solid var(--glass-border);
+    padding: 0.2rem 0.55rem; border-radius: 4px; font-size: 0.75rem; color: var(--white60);
+  }
+  .project-link { font-size: 0.82rem; color: var(--purple-light); text-decoration: none; margin-top: auto; transition: color 0.2s; }
+  .project-link:hover { color: var(--blue-light); }
 
+  /* EXPERIENCE */
   .timeline { display: flex; flex-direction: column; }
-  .tl-item { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+  .tl-item { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--glass-border); }
   .tl-item:last-child { border-bottom: none; }
-  .tl-period { font-size: 0.82rem; color: var(--ink2); margin-bottom: 0.4rem; }
-  .tl-type { font-size: 0.75rem; background: var(--bg); border: 1px solid var(--border); color: var(--ink2); padding: 0.15rem 0.55rem; border-radius: 4px; display: inline-block; }
-  .tl-body h3 { font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.2rem; }
-  .tl-company { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
-  .tl-body ul { padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
-  .tl-body ul li { font-size: 0.875rem; color: var(--ink2); line-height: 1.65; }
-  .tl-body ul li strong { color: var(--ink); font-weight: 500; }
+  .tl-period { font-size: 0.82rem; color: var(--white60); margin-bottom: 0.5rem; }
+  .tl-type { font-size: 0.72rem; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: var(--purple-light); padding: 0.15rem 0.55rem; border-radius: 4px; display: inline-block; }
+  .tl-body h3 { font-size: 1.05rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
+  .tl-company { font-size: 0.9rem; font-weight: 500; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .tl-body ul { padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .tl-body ul li { font-size: 0.875rem; color: var(--white60); line-height: 1.65; font-weight: 300; }
+  .tl-body ul li strong { color: var(--white); font-weight: 500; }
 
-  #certifications { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  /* CERTS */
   .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-  .cert-card { border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; background: var(--bg); transition: border-color 0.2s, transform 0.2s; }
-  .cert-card:hover { border-color: var(--accent-mid); transform: translateY(-2px); }
-  .cert-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
-  .cert-name { font-size: 0.875rem; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 0.4rem; }
-  .cert-date { font-size: 0.78rem; color: var(--ink2); }
-  .cert-issuer { font-size: 0.75rem; color: var(--accent); font-weight: 500; margin-top: 0.3rem; }
+  .cert-card { padding: 1.5rem; transition: transform 0.2s; }
+  .cert-card:hover { transform: translateY(-3px); }
+  .cert-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .cert-name { font-size: 0.875rem; font-weight: 500; color: var(--white); line-height: 1.4; margin-bottom: 0.4rem; }
+  .cert-issuer { font-size: 0.75rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; margin-bottom: 0.25rem; }
+  .cert-date { font-size: 0.75rem; color: var(--white60); }
 
+  /* CONTACT */
   .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-  .contact-left p { font-size: 1rem; color: var(--ink2); line-height: 1.8; margin-bottom: 1.5rem; }
+  .contact-left p { font-size: 1rem; color: var(--white60); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
   .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
-  .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 9px; text-decoration: none; color: var(--ink); background: var(--white); transition: border-color 0.2s, transform 0.15s; }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
-  .contact-icon { width: 38px; height: 38px; background: var(--accent-light); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-  .cl-label { font-size: 0.75rem; color: var(--ink2); display: block; margin-bottom: 0.1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem; border-radius: 12px;
+    text-decoration: none; color: var(--white);
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover { background: var(--glass-hover); border-color: rgba(124,58,237,0.4); transform: translateX(6px); }
+  .contact-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(59,130,246,0.3));
+    border: 1px solid rgba(124,58,237,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .cl-label { font-size: 0.72rem; color: var(--white60); display: block; margin-bottom: 0.15rem; }
   .cl-value { font-size: 0.875rem; font-weight: 500; }
 
-  footer { text-align: center; padding: 2rem; font-size: 0.82rem; color: var(--ink2); border-top: 1px solid var(--border); }
+  footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem; font-size: 0.82rem; color: var(--white60); border-top: 1px solid var(--glass-border); }
 
-  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
@@ -130,14 +282,21 @@
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-column: span 1; }
     .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
-  }
-  @media (max-width: 600px) {
-    .skills-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 2rem; }
+    .hero-stats { flex-direction: column; gap: 0; }
+    .stat-item:first-child { border-radius: 12px 12px 0 0; }
+    .stat-item:last-child { border-radius: 0 0 12px 12px; }
+    .stat-item:not(:last-child) { border-right: 1px solid var(--glass-border); border-bottom: none; }
   }
 </style>
 </head>
 <body>
+
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+</div>
 
 <nav>
   <a href="#" class="nav-logo">Sakshi Goel</a>
@@ -158,13 +317,13 @@
     <p class="hero-desc">6+ years delivering C#, ASP.NET Core, WPF, Azure, and Python solutions in enterprise environments. Azure-certified. No sponsorship required.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
+      <a href="#contact" class="btn-glass">Get in Touch</a>
     </div>
     <div class="hero-stats">
-      <div><span class="stat-num">6+</span><span class="stat-label">Years experience</span></div>
-      <div><span class="stat-num">3</span><span class="stat-label">Azure certifications</span></div>
-      <div><span class="stat-num">50%</span><span class="stat-label">Diagnostic speed improvement</span></div>
-      <div><span class="stat-num">PR</span><span class="stat-label">No sponsorship needed</span></div>
+      <div class="stat-item"><span class="stat-num">6+</span><span class="stat-label">Years experience</span></div>
+      <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Azure certifications</span></div>
+      <div class="stat-item"><span class="stat-num">50%</span><span class="stat-label">Diagnostic speed gain</span></div>
+      <div class="stat-item"><span class="stat-num">PR</span><span class="stat-label">No sponsorship needed</span></div>
     </div>
   </div>
 </div>
@@ -177,11 +336,11 @@
         <h2 class="sec-title">Builder, problem-solver,<br><em>developer</em></h2>
         <p>I'm a .NET Developer with 6+ years of experience delivering enterprise software at companies like Mahindra Electric and Schneider Electric. My work spans C#, WPF desktop apps, ASP.NET Core APIs, SQL Server, Azure cloud, and Python Flask.</p>
         <p>After relocating to Calgary as a Permanent Resident, I'm actively seeking .NET Developer opportunities where I can bring my enterprise background, Azure certifications, and passion for clean, efficient code.</p>
-        <p>I hold three Microsoft Azure certifications — AZ-900, AZ-104, and AI-900 — and recently containerised and deployed a live REST API using Docker and Render.</p>
+        <p>I hold three Microsoft Azure certifications — AZ-900, AZ-104, and AI-900 — and recently containerised and deployed a live REST API using Docker.</p>
       </div>
-      <div class="info-table">
+      <div class="glass info-table">
         <div class="info-row"><span class="info-key">Location</span><span class="info-val">Calgary, AB T3J3H7</span></div>
-        <div class="info-row"><span class="info-key">Status</span><span class="info-val"><span class="pill">Open to work</span></span></div>
+        <div class="info-row"><span class="info-key">Status</span><span class="info-val"><span class="status-pill">Open to work</span></span></div>
         <div class="info-row"><span class="info-key">Work auth</span><span class="info-val">Permanent Resident</span></div>
         <div class="info-row"><span class="info-key">Sponsorship</span><span class="info-val">Not required</span></div>
         <div class="info-row"><span class="info-key">Education</span><span class="info-val">B.Tech Computer Science</span></div>
@@ -198,29 +357,29 @@
     <div class="eyebrow">Technical skills</div>
     <h2 class="sec-title">What I work with</h2>
     <div class="skills-grid fade-up">
-      <div class="skill-card">
+      <div class="skill-card glass">
         <div class="skill-card-title">Languages</div>
         <div class="tags"><span class="tag">C#</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card glass">
         <div class="skill-card-title">Frameworks</div>
-        <div class="tags"><span class="tag">.NET 9/10</span><span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">Entity Framework Core</span><span class="tag">WPF</span><span class="tag">WinForms</span><span class="tag">Python Flask</span></div>
+        <div class="tags"><span class="tag">.NET 9/10</span><span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">EF Core</span><span class="tag">WPF</span><span class="tag">WinForms</span><span class="tag">Flask</span></div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card glass">
         <div class="skill-card-title">Cloud & DevOps</div>
-        <div class="tags"><span class="tag">Microsoft Azure</span><span class="tag">Azure App Service</span><span class="tag">Azure Functions</span><span class="tag">Azure Storage</span><span class="tag">Docker</span><span class="tag">CI-CD</span><span class="tag">Jenkins</span><span class="tag">Git</span></div>
+        <div class="tags"><span class="tag">Microsoft Azure</span><span class="tag">Azure App Service</span><span class="tag">Azure Functions</span><span class="tag">Azure Storage</span><span class="tag">Docker</span><span class="tag">CI-CD</span><span class="tag">Jenkins</span></div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card glass">
         <div class="skill-card-title">Databases</div>
         <div class="tags"><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Stored Procedures</span><span class="tag">Query Optimisation</span></div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card glass">
         <div class="skill-card-title">Tools</div>
         <div class="tags"><span class="tag">Visual Studio</span><span class="tag">VS Code</span><span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">JIRA</span><span class="tag">GitHub</span></div>
       </div>
-      <div class="skill-card">
+      <div class="skill-card glass">
         <div class="skill-card-title">Practices</div>
-        <div class="tags"><span class="tag">Backend Development</span><span class="tag">REST API Design</span><span class="tag">Agile / Scrum</span><span class="tag">Unit Testing</span><span class="tag">MVVM</span><span class="tag">Performance Tuning</span></div>
+        <div class="tags"><span class="tag">Backend Dev</span><span class="tag">REST API Design</span><span class="tag">Agile / Scrum</span><span class="tag">Unit Testing</span><span class="tag">MVVM</span><span class="tag">Performance Tuning</span></div>
       </div>
     </div>
   </div>
@@ -231,39 +390,39 @@
     <div class="eyebrow">Projects</div>
     <h2 class="sec-title">Things I've built</h2>
     <div class="projects-grid fade-up">
-      <div class="project-card featured">
+      <div class="project-card glass featured">
         <div class="project-head">
           <span class="project-name">APIDemo — .NET 10 REST API</span>
           <a href="https://sakshi-apidemo.onrender.com/api/Toy" target="_blank" class="live-badge">🟢 Live</a>
         </div>
-        <p class="project-desc">Production-ready .NET 10 RESTful API with ASP.NET Core, Entity Framework Core, and SQL Server. Full CRUD operations, async/await patterns, dependency injection, and code-first migrations. Containerised with Docker and deployed to cloud.</p>
+        <p class="project-desc">Production-ready .NET 10 RESTful API with ASP.NET Core, Entity Framework Core, and SQL Server. Full CRUD, async/await, dependency injection, code-first migrations. Containerised with Docker and deployed to cloud.</p>
         <div class="project-tags">
-          <span class="project-tag">C#</span><span class="project-tag">.NET 10</span><span class="project-tag">ASP.NET Core</span><span class="project-tag">EF Core</span><span class="project-tag">SQL Server</span><span class="project-tag">Docker</span><span class="project-tag">REST API</span>
+          <span class="project-tag">C#</span><span class="project-tag">.NET 10</span><span class="project-tag">ASP.NET Core</span><span class="project-tag">EF Core</span><span class="project-tag">Docker</span><span class="project-tag">REST API</span>
         </div>
         <a href="https://github.com/GoelSakshi742/APIDemo" target="_blank" class="project-link">→ View on GitHub</a>
       </div>
-      <div class="project-card">
+      <div class="project-card glass">
         <div class="project-head"><span class="project-name">News API Flask App</span></div>
-        <p class="project-desc">Flask web app fetching and displaying live news headlines using NewsAPI. Demonstrates real-time API integration and Python backend development.</p>
-        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">REST API</span><span class="project-tag">HTML</span></div>
+        <p class="project-desc">Flask web app fetching live news headlines using NewsAPI. Real-time API integration and Python backend development.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">REST API</span></div>
         <a href="https://github.com/GoelSakshi742/NewsAPIPythonFlaskApp" target="_blank" class="project-link">→ View on GitHub</a>
       </div>
-      <div class="project-card">
+      <div class="project-card glass">
         <div class="project-head"><span class="project-name">LeetCode — C# Solutions</span></div>
-        <p class="project-desc">Algorithm and data structure solutions in C#. Demonstrates problem-solving skills and idiomatic C# coding patterns.</p>
-        <div class="project-tags"><span class="project-tag">C#</span><span class="project-tag">Algorithms</span><span class="project-tag">Data Structures</span></div>
+        <p class="project-desc">Algorithm and data structure solutions in C#. Problem-solving skills and idiomatic C# patterns.</p>
+        <div class="project-tags"><span class="project-tag">C#</span><span class="project-tag">Algorithms</span><span class="project-tag">DSA</span></div>
         <a href="https://github.com/GoelSakshi742/LeetCode" target="_blank" class="project-link">→ View on GitHub</a>
       </div>
-      <div class="project-card">
+      <div class="project-card glass">
         <div class="project-head"><span class="project-name">Stock Data Analysis</span></div>
-        <p class="project-desc">Extracts historical stock and revenue data, performs analysis, and builds an interactive visualisation dashboard.</p>
-        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Jupyter</span><span class="project-tag">Pandas</span><span class="project-tag">Data Viz</span></div>
+        <p class="project-desc">Extracts historical stock data, performs analysis, and builds an interactive visualisation dashboard.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Jupyter</span><span class="project-tag">Pandas</span></div>
         <a href="https://github.com/GoelSakshi742/ExtractingOnlineStockData_Visualizing" target="_blank" class="project-link">→ View on GitHub</a>
       </div>
-      <div class="project-card">
+      <div class="project-card glass">
         <div class="project-head"><span class="project-name">Web Data SQL Queries</span></div>
-        <p class="project-desc">Fetches online data, converts to dataframes, loads into a database, and runs analytical SQL queries — an end-to-end data pipeline.</p>
-        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">SQL</span><span class="project-tag">Jupyter</span><span class="project-tag">Pandas</span></div>
+        <p class="project-desc">Fetches online data, converts to dataframes, loads into a database, runs analytical SQL queries.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">SQL</span><span class="project-tag">Jupyter</span></div>
         <a href="https://github.com/GoelSakshi742/WebDataQueries_SQL" target="_blank" class="project-link">→ View on GitHub</a>
       </div>
     </div>
@@ -276,50 +435,40 @@
     <h2 class="sec-title">Where I've worked</h2>
     <div class="timeline fade-up">
       <div class="tl-item">
-        <div>
-          <div class="tl-period">Dec 2023 – Present</div>
-          <span class="tl-type">Freelance · Canada</span>
-        </div>
+        <div><div class="tl-period">Dec 2023 – Present</div><span class="tl-type">Freelance · Canada</span></div>
         <div class="tl-body">
           <h3>Independent IT & Cloud Solutions Specialist</h3>
           <div class="tl-company">Self-employed</div>
           <ul>
-            <li>Designed and deployed a <strong>.NET 10 RESTful API</strong> with ASP.NET Core and EF Core — containerised with Docker, deployed to cloud. Live at sakshi-apidemo.onrender.com</li>
+            <li>Designed and deployed a <strong>.NET 10 RESTful API</strong> with ASP.NET Core and EF Core — containerised with Docker. Live at sakshi-apidemo.onrender.com</li>
             <li>Built full-stack web apps using <strong>Python Flask</strong> with real-time processing and API integration</li>
-            <li>Designed and deployed <strong>.NET 9 RESTful APIs</strong> with C# and SQL Server for CRUD-based business workflows</li>
             <li>Developed <strong>Azure solutions (AZ-104)</strong>: VMs, Storage, Networking, Security with testing and monitoring</li>
           </ul>
         </div>
       </div>
       <div class="tl-item">
-        <div>
-          <div class="tl-period">Jul 2023 – Oct 2023</div>
-          <span class="tl-type">Contract · India</span>
-        </div>
+        <div><div class="tl-period">Jul 2023 – Oct 2023</div><span class="tl-type">Contract · India</span></div>
         <div class="tl-body">
           <h3>Software Engineer</h3>
           <div class="tl-company">Schneider Electric</div>
           <ul>
-            <li>Developed a <strong>WPF application</strong> using C# and MVVM to automate internal workflows, improving efficiency by <strong>5%</strong></li>
-            <li>Streamlined JIRA and Git-based processes, reducing delivery turnaround time by <strong>10%</strong></li>
-            <li>Supported debugging, issue resolution, and feature implementation in an enterprise engineering environment</li>
+            <li>Developed a <strong>WPF application</strong> using C# and MVVM to automate workflows, improving efficiency by <strong>5%</strong></li>
+            <li>Streamlined JIRA and Git-based processes, reducing turnaround time by <strong>10%</strong></li>
+            <li>Supported debugging, issue resolution, and feature implementation in an enterprise environment</li>
           </ul>
         </div>
       </div>
       <div class="tl-item">
-        <div>
-          <div class="tl-period">Aug 2017 – Jun 2023</div>
-          <span class="tl-type">Full-time · India</span>
-        </div>
+        <div><div class="tl-period">Aug 2017 – Jun 2023</div><span class="tl-type">Full-time · India</span></div>
         <div class="tl-body">
           <h3>Lead Software Developer</h3>
           <div class="tl-company">Mahindra Electric</div>
           <ul>
             <li>Developed <strong>C# WPF applications</strong> for end-of-line testing, improving diagnostic speed by <strong>50%</strong></li>
             <li>Built a <strong>Vehicle Test Tool</strong> using C#, SQL Server, and WPF improving production efficiency by <strong>25%</strong></li>
-            <li>Implemented <strong>CI-CD pipelines</strong> with Jenkins to streamline releases and deployment consistency</li>
+            <li>Implemented <strong>CI-CD pipelines</strong> with Jenkins to streamline releases</li>
             <li>Served as <strong>Scrum Master</strong> in Agile teams, coordinating delivery and continuous improvement</li>
-            <li>Investigated root-cause issues and delivered integration fixes for production-critical systems</li>
+            <li>Investigated root-cause issues and delivered fixes for production-critical systems</li>
           </ul>
         </div>
       </div>
@@ -332,36 +481,11 @@
     <div class="eyebrow">Certifications</div>
     <h2 class="sec-title">Credentials</h2>
     <div class="certs-grid fade-up">
-      <div class="cert-card">
-        <div class="cert-icon">☁️</div>
-        <div class="cert-name">Azure Fundamentals</div>
-        <div class="cert-issuer">Microsoft · AZ-900</div>
-        <div class="cert-date">Jun 2024</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">⚙️</div>
-        <div class="cert-name">Azure Administrator Associate</div>
-        <div class="cert-issuer">Microsoft · AZ-104</div>
-        <div class="cert-date">Apr 2025</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🤖</div>
-        <div class="cert-name">Azure AI Fundamentals</div>
-        <div class="cert-issuer">Microsoft · AI-900</div>
-        <div class="cert-date">Sep 2025</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">📊</div>
-        <div class="cert-name">IBM Data Analyst Professional</div>
-        <div class="cert-issuer">IBM</div>
-        <div class="cert-date">Nov 2025</div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🎓</div>
-        <div class="cert-name">NPower Junior Data Analyst</div>
-        <div class="cert-issuer">NPower Canada</div>
-        <div class="cert-date">Nov 2025</div>
-      </div>
+      <div class="cert-card glass"><div class="cert-icon">☁️</div><div class="cert-name">Azure Fundamentals</div><div class="cert-issuer">Microsoft · AZ-900</div><div class="cert-date">Jun 2024</div></div>
+      <div class="cert-card glass"><div class="cert-icon">⚙️</div><div class="cert-name">Azure Administrator Associate</div><div class="cert-issuer">Microsoft · AZ-104</div><div class="cert-date">Apr 2025</div></div>
+      <div class="cert-card glass"><div class="cert-icon">🤖</div><div class="cert-name">Azure AI Fundamentals</div><div class="cert-issuer">Microsoft · AI-900</div><div class="cert-date">Sep 2025</div></div>
+      <div class="cert-card glass"><div class="cert-icon">📊</div><div class="cert-name">IBM Data Analyst Professional</div><div class="cert-issuer">IBM</div><div class="cert-date">Nov 2025</div></div>
+      <div class="cert-card glass"><div class="cert-icon">🎓</div><div class="cert-name">NPower Junior Data Analyst</div><div class="cert-issuer">NPower Canada</div><div class="cert-date">Nov 2025</div></div>
     </div>
   </div>
 </section>
@@ -371,7 +495,7 @@
     <div class="contact-wrap fade-up">
       <div class="contact-left">
         <div class="eyebrow">Contact</div>
-        <h2 class="sec-title">Let's work<br>together</h2>
+        <h2 class="sec-title">Let's work<br><em>together</em></h2>
         <p>I'm actively looking for .NET Developer opportunities in Calgary. If you're hiring or just want to connect, I'd love to hear from you.</p>
         <p>Open to full-time, contract, and hybrid roles. Permanent Resident of Canada — no sponsorship required.</p>
       </div>
@@ -406,7 +530,7 @@
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
