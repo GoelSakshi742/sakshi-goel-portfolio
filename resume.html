@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Sakshi Goel</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg1: #0d0b1e; --purple: #7c3aed; --purple-light: #a78bfa;
+    --blue: #3b82f6; --blue-light: #93c5fd; --white: #ffffff;
+    --white80: rgba(255,255,255,0.8); --white60: rgba(255,255,255,0.6);
+    --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.12);
+    --glass-hover: rgba(255,255,255,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--bg1); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+
+  .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; animation: float 8s ease-in-out infinite; }
+  .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7c3aed, transparent); top: -200px; left: -200px; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6, transparent); top: 30%; right: -150px; animation-delay: -3s; }
+  .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent); bottom: 10%; left: 20%; animation-delay: -5s; }
+  @keyframes float { 0%,100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,11,30,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; text-decoration: none; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--white60); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.active { color: var(--purple-light); }
+
+  .glass { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 16px; }
+
+  .page-hero { position: relative; z-index: 1; padding: 120px 3rem 4rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+  .hero-text {}
+  .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1rem; background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-title em { font-style: italic; }
+  .page-subtitle { font-size: 1rem; color: var(--white60); line-height: 1.8; max-width: 500px; font-weight: 300; }
+  .download-btn { background: linear-gradient(135deg, var(--purple), var(--blue)); color: white; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 24px rgba(124,58,237,0.4); white-space: nowrap; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .download-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  section { position: relative; z-index: 1; padding: 4rem 3rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 2rem; color: var(--white); line-height: 1.2; }
+  .sec-title em { font-style: italic; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline { display: flex; flex-direction: column; }
+  .tl-item { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--glass-border); }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-period { font-size: 0.82rem; color: var(--white60); margin-bottom: 0.5rem; }
+  .tl-type { font-size: 0.72rem; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: var(--purple-light); padding: 0.15rem 0.55rem; border-radius: 4px; display: inline-block; }
+  .tl-body h3 { font-size: 1.05rem; font-weight: 500; color: var(--white); margin-bottom: 0.2rem; }
+  .tl-company { font-size: 0.9rem; font-weight: 500; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .tl-body ul { padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .tl-body ul li { font-size: 0.875rem; color: var(--white60); line-height: 1.65; font-weight: 300; }
+  .tl-body ul li strong { color: var(--white); font-weight: 500; }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .cert-card { padding: 1.5rem; transition: transform 0.2s; }
+  .cert-card:hover { transform: translateY(-3px); background: var(--glass-hover); }
+  .cert-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .cert-name { font-size: 0.875rem; font-weight: 500; color: var(--white); line-height: 1.4; margin-bottom: 0.4rem; }
+  .cert-issuer { font-size: 0.75rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; margin-bottom: 0.25rem; }
+  .cert-date { font-size: 0.75rem; color: var(--white60); }
+
+  /* EDUCATION */
+  .edu-card { padding: 2rem; display: flex; gap: 2rem; align-items: center; }
+  .edu-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .edu-degree { font-size: 1.1rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
+  .edu-school { font-size: 0.9rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 500; margin-bottom: 0.3rem; }
+  .edu-detail { font-size: 0.85rem; color: var(--white60); }
+
+  footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem; font-size: 0.82rem; color: var(--white60); border-top: 1px solid var(--glass-border); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+  .footer-links a { color: var(--white60); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--purple-light); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 3rem 1.5rem; }
+    .page-hero { padding: 100px 1.5rem 3rem; }
+    .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .edu-card { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-orbs">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sakshi Goel</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-text">
+    <div class="eyebrow">Resume</div>
+    <h1 class="page-title">Experience &<br><em>Credentials</em></h1>
+    <p class="page-subtitle">6+ years of enterprise .NET development, three Azure certifications, and a track record of measurable results.</p>
+  </div>
+  <a href="mailto:ersakshigoel@gmail.com?subject=Resume Request" class="download-btn">📄 Request Resume</a>
+</div>
+
+<!-- EXPERIENCE -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Work history</div>
+    <h2 class="sec-title">Where I've <em>worked</em></h2>
+    <div class="timeline fade-up">
+      <div class="tl-item">
+        <div>
+          <div class="tl-period">Dec 2023 – Present</div>
+          <span class="tl-type">Freelance · Canada</span>
+        </div>
+        <div class="tl-body">
+          <h3>Independent IT & Cloud Solutions Specialist</h3>
+          <div class="tl-company">Self-employed</div>
+          <ul>
+            <li>Designed and deployed a <strong>.NET 10 RESTful API</strong> with ASP.NET Core and EF Core — containerised with Docker. Live at sakshi-apidemo.onrender.com</li>
+            <li>Built full-stack web apps using <strong>Python Flask</strong> with real-time processing and API integration</li>
+            <li>Developed <strong>Azure solutions (AZ-104)</strong>: VMs, Storage, Networking, Security with testing and monitoring</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div>
+          <div class="tl-period">Jul 2023 – Oct 2023</div>
+          <span class="tl-type">Contract · India</span>
+        </div>
+        <div class="tl-body">
+          <h3>Software Engineer</h3>
+          <div class="tl-company">Schneider Electric</div>
+          <ul>
+            <li>Developed a <strong>WPF application</strong> using C# and MVVM to automate workflows, improving efficiency by <strong>5%</strong></li>
+            <li>Streamlined JIRA and Git-based processes, reducing turnaround time by <strong>10%</strong></li>
+            <li>Supported debugging, issue resolution, and feature implementation in an enterprise environment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div>
+          <div class="tl-period">Aug 2017 – Jun 2023</div>
+          <span class="tl-type">Full-time · India</span>
+        </div>
+        <div class="tl-body">
+          <h3>Lead Software Developer</h3>
+          <div class="tl-company">Mahindra Electric</div>
+          <ul>
+            <li>Developed <strong>C# WPF applications</strong> for end-of-line testing, improving diagnostic speed by <strong>50%</strong></li>
+            <li>Built a <strong>Vehicle Test Tool</strong> using C#, SQL Server, and WPF improving production efficiency by <strong>25%</strong></li>
+            <li>Implemented <strong>CI-CD pipelines</strong> with Jenkins to streamline releases</li>
+            <li>Served as <strong>Scrum Master</strong> in Agile teams, coordinating delivery and continuous improvement</li>
+            <li>Investigated root-cause issues and delivered fixes for production-critical systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="eyebrow">Certifications</div>
+    <h2 class="sec-title">My <em>credentials</em></h2>
+    <div class="certs-grid fade-up">
+      <div class="cert-card glass">
+        <div class="cert-icon">☁️</div>
+        <div class="cert-name">Azure Fundamentals</div>
+        <div class="cert-issuer">Microsoft · AZ-900</div>
+        <div class="cert-date">Jun 2024</div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">⚙️</div>
+        <div class="cert-name">Azure Administrator Associate</div>
+        <div class="cert-issuer">Microsoft · AZ-104</div>
+        <div class="cert-date">Apr 2025</div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">🤖</div>
+        <div class="cert-name">Azure AI Fundamentals</div>
+        <div class="cert-issuer">Microsoft · AI-900</div>
+        <div class="cert-date">Sep 2025</div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">📊</div>
+        <div class="cert-name">IBM Data Analyst Professional</div>
+        <div class="cert-issuer">IBM</div>
+        <div class="cert-date">Nov 2025</div>
+      </div>
+      <div class="cert-card glass">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-name">NPower Junior Data Analyst</div>
+        <div class="cert-issuer">NPower Canada</div>
+        <div class="cert-date">Nov 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="eyebrow">Education</div>
+    <h2 class="sec-title">Academic <em>background</em></h2>
+    <div class="edu-card glass fade-up">
+      <div class="edu-icon">🏛️</div>
+      <div>
+        <div class="edu-degree">Bachelor of Technology — Computer Science & Engineering</div>
+        <div class="edu-school">Mody University of Science and Technology, India</div>
+        <div class="edu-detail">Graduated with a foundation in software engineering, data structures, algorithms, and systems design.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  Built by Sakshi Goel · Calgary, AB · 2026
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Sakshi Goel</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg1: #0d0b1e; --purple: #7c3aed; --purple-light: #a78bfa;
+    --blue: #3b82f6; --blue-light: #93c5fd; --white: #ffffff;
+    --white80: rgba(255,255,255,0.8); --white60: rgba(255,255,255,0.6);
+    --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.12);
+    --glass-hover: rgba(255,255,255,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--bg1); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+
+  .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; animation: float 8s ease-in-out infinite; }
+  .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7c3aed, transparent); top: -200px; left: -200px; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6, transparent); top: 30%; right: -150px; animation-delay: -3s; }
+  .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent); bottom: 10%; left: 20%; animation-delay: -5s; }
+  @keyframes float { 0%,100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,11,30,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; text-decoration: none; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--white60); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.active { color: var(--purple-light); }
+
+  .glass { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 16px; }
+
+  .page-hero { position: relative; z-index: 1; padding: 120px 3rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-title em { font-style: italic; }
+  .page-subtitle { font-size: 1.1rem; color: var(--white60); line-height: 1.8; max-width: 600px; font-weight: 300; }
+
+  section { position: relative; z-index: 1; padding: 4rem 3rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 2rem; color: var(--white); line-height: 1.2; }
+  .sec-title em { font-style: italic; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* VIDEO */
+  .video-section { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(59,130,246,0.06)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 5rem 3rem; }
+  .video-inner { max-width: 900px; margin: 0 auto; }
+  .video-container { border-radius: 20px; overflow: hidden; border: 1px solid rgba(124,58,237,0.3); box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 60px rgba(124,58,237,0.15); margin-top: 2rem; }
+  .video-container > div { border-radius: 0; }
+  .video-label { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: var(--purple-light); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1rem; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .project-card { padding: 1.75rem; display: flex; flex-direction: column; transition: transform 0.2s; }
+  .project-card:hover { transform: translateY(-4px); background: var(--glass-hover); border-color: rgba(124,58,237,0.4); }
+  .project-card.featured { grid-column: span 2; background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(59,130,246,0.1)); border-color: rgba(124,58,237,0.3); }
+  .project-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; }
+  .project-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); }
+  .live-badge { font-size: 0.72rem; font-weight: 500; background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3); color: #4ade80; padding: 0.2rem 0.6rem; border-radius: 4px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+  .live-badge:hover { background: rgba(74,222,128,0.25); }
+  .project-desc { font-size: 0.875rem; color: var(--white60); line-height: 1.65; margin-bottom: 1.25rem; flex: 1; font-weight: 300; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .project-tag { background: rgba(255,255,255,0.06); border: 1px solid var(--glass-border); padding: 0.2rem 0.55rem; border-radius: 4px; font-size: 0.75rem; color: var(--white60); }
+  .project-link { font-size: 0.82rem; color: var(--purple-light); text-decoration: none; margin-top: auto; transition: color 0.2s; }
+  .project-link:hover { color: var(--blue-light); }
+
+  footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem; font-size: 0.82rem; color: var(--white60); border-top: 1px solid var(--glass-border); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+  .footer-links a { color: var(--white60); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--purple-light); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section, .video-section { padding: 3rem 1.5rem; }
+    .page-hero { padding: 100px 1.5rem 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-orbs">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sakshi Goel</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Projects</div>
+  <h1 class="page-title">Things I've <em>built</em></h1>
+  <p class="page-subtitle">A collection of live deployments, APIs, data tools, and algorithm solutions — all showcasing real-world .NET and Python engineering.</p>
+</div>
+
+<!-- LOOM VIDEO -->
+<section class="video-section">
+  <div class="video-inner fade-up">
+    <div class="eyebrow">Portfolio Walkthrough</div>
+    <h2 class="sec-title">Watch me walk through <em>my work</em></h2>
+    <p style="color: var(--white60); font-size: 1rem; line-height: 1.8; font-weight: 300; max-width: 700px;">A short video walkthrough covering my key projects, the live .NET 10 REST API, Azure deployments, and my enterprise background at Mahindra Electric and Schneider Electric.</p>
+    <div class="video-container">
+      <div style="position: relative; padding-bottom: 65.01809408926417%; height: 0;">
+        <iframe src="https://www.loom.com/embed/4343e03b8e1b461f8ac184fdd95b633d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Code & Deployments</div>
+    <h2 class="sec-title">All <em>projects</em></h2>
+    <div class="projects-grid fade-up">
+      <div class="project-card glass featured">
+        <div class="project-head">
+          <span class="project-name">APIDemo — .NET 10 REST API</span>
+          <a href="https://sakshi-apidemo.onrender.com/api/Toy" target="_blank" class="live-badge">🟢 Live</a>
+        </div>
+        <p class="project-desc">Production-ready .NET 10 RESTful API with ASP.NET Core, Entity Framework Core, and SQL Server. Full CRUD, async/await, dependency injection, code-first migrations. Containerised with Docker and deployed to cloud hosting.</p>
+        <div class="project-tags">
+          <span class="project-tag">C#</span><span class="project-tag">.NET 10</span><span class="project-tag">ASP.NET Core</span><span class="project-tag">EF Core</span><span class="project-tag">Docker</span><span class="project-tag">REST API</span>
+        </div>
+        <a href="https://github.com/GoelSakshi742/APIDemo" target="_blank" class="project-link">→ View on GitHub</a>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-head"><span class="project-name">News API Flask App</span></div>
+        <p class="project-desc">Flask web app fetching live news headlines using NewsAPI. Demonstrates real-time API integration and Python backend development.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">REST API</span></div>
+        <a href="https://github.com/GoelSakshi742/NewsAPIPythonFlaskApp" target="_blank" class="project-link">→ View on GitHub</a>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-head"><span class="project-name">LeetCode — C# Solutions</span></div>
+        <p class="project-desc">Algorithm and data structure solutions in C#. Demonstrates problem-solving skills and idiomatic C# patterns.</p>
+        <div class="project-tags"><span class="project-tag">C#</span><span class="project-tag">Algorithms</span><span class="project-tag">DSA</span></div>
+        <a href="https://github.com/GoelSakshi742/LeetCode" target="_blank" class="project-link">→ View on GitHub</a>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-head"><span class="project-name">Stock Data Analysis</span></div>
+        <p class="project-desc">Extracts historical stock data, performs statistical analysis, and builds an interactive visualisation dashboard using Jupyter and Pandas.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Jupyter</span><span class="project-tag">Pandas</span></div>
+        <a href="https://github.com/GoelSakshi742/ExtractingOnlineStockData_Visualizing" target="_blank" class="project-link">→ View on GitHub</a>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-head"><span class="project-name">Web Data SQL Queries</span></div>
+        <p class="project-desc">Fetches online data, converts to dataframes, loads into a database, and runs analytical SQL queries for insight extraction.</p>
+        <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">SQL</span><span class="project-tag">Jupyter</span></div>
+        <a href="https://github.com/GoelSakshi742/WebDataQueries_SQL" target="_blank" class="project-link">→ View on GitHub</a>
+      </div>
+
+      <div class="project-card glass" style="align-items: center; justify-content: center; text-align: center; border-style: dashed;">
+        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🔧</div>
+        <div class="project-name" style="margin-bottom: 0.5rem;">More coming soon</div>
+        <p class="project-desc" style="margin-bottom: 1rem;">Currently building more .NET and Azure projects. Watch this space.</p>
+        <a href="https://github.com/GoelSakshi742" target="_blank" class="project-link">→ Follow on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  Built by Sakshi Goel · Calgary, AB · 2026
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

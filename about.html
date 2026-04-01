@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Sakshi Goel</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg1: #0d0b1e; --purple: #7c3aed; --purple-light: #a78bfa;
+    --blue: #3b82f6; --blue-light: #93c5fd; --white: #ffffff;
+    --white80: rgba(255,255,255,0.8); --white60: rgba(255,255,255,0.6);
+    --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.12);
+    --glass-hover: rgba(255,255,255,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--bg1); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+
+  .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; animation: float 8s ease-in-out infinite; }
+  .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7c3aed, transparent); top: -200px; left: -200px; }
+  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6, transparent); top: 30%; right: -150px; animation-delay: -3s; }
+  .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent); bottom: 10%; left: 20%; animation-delay: -5s; }
+  @keyframes float { 0%,100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,11,30,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; text-decoration: none; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--white60); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.active { color: var(--purple-light); }
+
+  .glass { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 16px; }
+
+  .page-hero { position: relative; z-index: 1; padding: 120px 3rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-title em { font-style: italic; }
+  .page-subtitle { font-size: 1.1rem; color: var(--white60); line-height: 1.8; max-width: 600px; font-weight: 300; }
+
+  section { position: relative; z-index: 1; padding: 5rem 3rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 2rem; color: var(--white); line-height: 1.2; }
+  .sec-title em { font-style: italic; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* ABOUT GRID */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 4rem; align-items: start; margin-bottom: 4rem; }
+  .about-text p { color: var(--white60); line-height: 1.85; margin-bottom: 1rem; font-size: 1rem; font-weight: 300; }
+
+  .info-table { display: flex; flex-direction: column; }
+  .info-row { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.25rem; font-size: 0.85rem; border-bottom: 1px solid var(--glass-border); background: var(--glass-bg); }
+  .info-row:first-child { border-radius: 12px 12px 0 0; border-top: 1px solid var(--glass-border); }
+  .info-row:last-child { border-radius: 0 0 12px 12px; }
+  .info-key { color: var(--white60); }
+  .info-val { color: var(--white); font-weight: 500; text-align: right; }
+  .status-pill { background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3); color: #4ade80; font-size: 0.75rem; font-weight: 500; padding: 0.2rem 0.7rem; border-radius: 20px; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .skill-card { padding: 1.5rem; transition: transform 0.2s; }
+  .skill-card:hover { transform: translateY(-3px); background: var(--glass-hover); border-color: rgba(124,58,237,0.4); }
+  .skill-card-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { background: rgba(255,255,255,0.07); border: 1px solid var(--glass-border); padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.8rem; color: var(--white60); transition: background 0.2s, color 0.2s; }
+  .tag:hover { background: rgba(124,58,237,0.2); color: var(--purple-light); border-color: rgba(124,58,237,0.4); }
+
+  /* VALUES */
+  .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .value-card { padding: 1.75rem; text-align: center; transition: transform 0.2s; }
+  .value-card:hover { transform: translateY(-4px); background: var(--glass-hover); }
+  .value-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .value-title { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+  .value-desc { font-size: 0.8rem; color: var(--white60); line-height: 1.5; font-weight: 300; }
+
+  .btn-primary { background: linear-gradient(135deg, var(--purple), var(--blue)); color: white; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 24px rgba(124,58,237,0.4); display: inline-block; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-glass { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); color: var(--white80); padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-glass:hover { background: var(--glass-hover); transform: translateY(-2px); }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+
+  footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem; font-size: 0.82rem; color: var(--white60); border-top: 1px solid var(--glass-border); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+  .footer-links a { color: var(--white60); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--purple-light); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 3rem 1.5rem; }
+    .page-hero { padding: 100px 1.5rem 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-orbs">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sakshi Goel</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">About me</div>
+  <h1 class="page-title">Builder, problem-solver,<br><em>developer</em></h1>
+  <p class="page-subtitle">6+ years of enterprise software development across India's leading companies — now bringing that expertise to Calgary's tech scene.</p>
+</div>
+
+<section>
+  <div class="container">
+    <div class="about-grid fade-up">
+      <div class="about-text">
+        <h2 class="sec-title">My <em>story</em></h2>
+        <p>I'm a .NET Developer with 6+ years of experience delivering enterprise software at companies like Mahindra Electric and Schneider Electric. My work spans C#, WPF desktop apps, ASP.NET Core APIs, SQL Server, Azure cloud, and Python Flask.</p>
+        <p>After relocating to Calgary as a Permanent Resident, I'm actively seeking .NET Developer opportunities where I can bring my enterprise background, Azure certifications, and passion for clean, efficient code.</p>
+        <p>I hold three Microsoft Azure certifications — AZ-900, AZ-104, and AI-900 — and recently containerised and deployed a live REST API using Docker on Render.</p>
+        <p>I thrive in Agile environments, having served as Scrum Master at Mahindra Electric while simultaneously leading a team of developers. I'm equally comfortable leading from the front or diving deep into backend architecture.</p>
+        <div class="cta-row">
+          <a href="projects.html" class="btn-primary">See My Projects</a>
+          <a href="contact.html" class="btn-glass">Get in Touch</a>
+        </div>
+      </div>
+      <div class="info-table">
+        <div class="info-row"><span class="info-key">Location</span><span class="info-val">Calgary, AB T3J3H7</span></div>
+        <div class="info-row"><span class="info-key">Status</span><span class="info-val"><span class="status-pill">Open to work</span></span></div>
+        <div class="info-row"><span class="info-key">Work auth</span><span class="info-val">Permanent Resident</span></div>
+        <div class="info-row"><span class="info-key">Sponsorship</span><span class="info-val">Not required</span></div>
+        <div class="info-row"><span class="info-key">Education</span><span class="info-val">B.Tech Computer Science</span></div>
+        <div class="info-row"><span class="info-key">University</span><span class="info-val">Mody University, India</span></div>
+        <div class="info-row"><span class="info-key">Phone</span><span class="info-val">(368) 399-0742</span></div>
+        <div class="info-row"><span class="info-key">Email</span><span class="info-val">ersakshigoel@gmail.com</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="eyebrow">What I value</div>
+    <h2 class="sec-title">My <em>philosophy</em></h2>
+    <div class="values-grid fade-up">
+      <div class="value-card glass">
+        <div class="value-icon">🏗️</div>
+        <div class="value-title">Clean Architecture</div>
+        <p class="value-desc">SOLID principles, MVVM patterns, and well-structured code that scales and is easy to maintain.</p>
+      </div>
+      <div class="value-card glass">
+        <div class="value-icon">☁️</div>
+        <div class="value-title">Cloud-First</div>
+        <p class="value-desc">Azure-certified with hands-on experience deploying, monitoring, and managing cloud infrastructure.</p>
+      </div>
+      <div class="value-card glass">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Performance</div>
+        <p class="value-desc">I've improved diagnostic speed by 50% and production efficiency by 25% through careful optimisation.</p>
+      </div>
+      <div class="value-card glass">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Team Leadership</div>
+        <p class="value-desc">Served as Scrum Master, coordinating Agile teams and driving continuous improvement culture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container">
+    <div class="eyebrow">Technical skills</div>
+    <h2 class="sec-title">What I <em>work with</em></h2>
+    <div class="skills-grid fade-up">
+      <div class="skill-card glass">
+        <div class="skill-card-title">Languages</div>
+        <div class="tags"><span class="tag">C#</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-card-title">Frameworks</div>
+        <div class="tags"><span class="tag">.NET 9/10</span><span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">EF Core</span><span class="tag">WPF</span><span class="tag">WinForms</span><span class="tag">Flask</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-card-title">Cloud & DevOps</div>
+        <div class="tags"><span class="tag">Microsoft Azure</span><span class="tag">Azure App Service</span><span class="tag">Azure Functions</span><span class="tag">Azure Storage</span><span class="tag">Docker</span><span class="tag">CI-CD</span><span class="tag">Jenkins</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-card-title">Databases</div>
+        <div class="tags"><span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Stored Procedures</span><span class="tag">Query Optimisation</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-card-title">Tools</div>
+        <div class="tags"><span class="tag">Visual Studio</span><span class="tag">VS Code</span><span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">JIRA</span><span class="tag">GitHub</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-card-title">Practices</div>
+        <div class="tags"><span class="tag">Backend Dev</span><span class="tag">REST API Design</span><span class="tag">Agile / Scrum</span><span class="tag">Unit Testing</span><span class="tag">MVVM</span><span class="tag">Performance Tuning</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  Built by Sakshi Goel · Calgary, AB · 2026
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
