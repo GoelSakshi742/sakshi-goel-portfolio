@@ -1,3 +1,19 @@
 {
-  "visits": []
+  "visits": [
+    {
+      "ts": "2026-08-13T16:48:22.659Z",
+      "page": "/console-test",
+      "title": "",
+      "referrer": "manual",
+      "country": "CA",
+      "region": "Alberta",
+      "city": "Calgary",
+      "timezone": "America/Edmonton",
+      "language": "",
+      "screen": "",
+      "viewport": "",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+      "visitor": "7a887e36af9b"
+    }
+  ]
 }
