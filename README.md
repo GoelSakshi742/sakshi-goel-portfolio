@@ -36,7 +36,7 @@ Enterprise-grade cloud manufacturing monitoring API built with Clean Architectur
 
 **Architecture highlights:**
 - **Clean Architecture** — Domain / Application / Infrastructure / Presentation layers fully separated
-- **IIoT simulation** — machine telemetry, sensor readings, equipment health scoring
+- **IoT simulation** — machine telemetry, sensor readings, equipment health scoring
 - **Digital twin concepts** — virtual representation of physical manufacturing assets
 - **Edge computing ready** — designed for low-latency local processing before cloud sync
 - **ASP.NET Core Web API** — versioned REST endpoints with Swagger documentation
