@@ -3,234 +3,431 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sakshi Goel — .NET Developer</title>
-
-<!-- LinkedIn / Social Preview -->
-<meta property="og:title" content="Sakshi Goel — .NET Developer Portfolio">
-<meta property="og:description" content="6+ years enterprise .NET | Azure certified | Calgary PR | Live .NET 10 API + Video Walkthrough">
-<meta property="og:image" content="https://goelsakshi742.github.io/sakshi-goel-portfolio/preview.png">
-<meta property="og:url" content="https://goelsakshi742.github.io/sakshi-goel-portfolio/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sakshi Goel — .NET Developer Portfolio">
-<meta name="twitter:description" content="6+ years enterprise .NET | Azure certified | Calgary PR | Live .NET 10 API + Video Walkthrough">
-<meta name="twitter:image" content="https://goelsakshi742.github.io/sakshi-goel-portfolio/preview.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<title>Sakshi Goel - .NET Developer</title>
+<meta name="description" content="Sakshi Goel is a .NET developer building reliable, well-architected software across the .NET stack and the cloud.">
+<meta name="theme-color" content="#0f172a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Gurmukhi:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg1: #0d0b1e; --bg2: #1a0a2e;
-    --purple: #7c3aed; --purple-light: #a78bfa;
-    --blue: #3b82f6; --blue-light: #93c5fd;
-    --pink: #ec4899; --white: #ffffff;
-    --white80: rgba(255,255,255,0.8); --white60: rgba(255,255,255,0.6);
-    --white20: rgba(255,255,255,0.2); --white10: rgba(255,255,255,0.08);
-    --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.12);
-    --glass-hover: rgba(255,255,255,0.1);
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0f172a;            /* slate-900 */
+    --bg-soft:rgba(148,163,184,0.05);
+    --text:#94a3b8;          /* slate-400 */
+    --head:#e2e8f0;          /* slate-200 */
+    --bright:#f1f5f9;        /* slate-100 */
+    --muted:#64748b;         /* slate-500 */
+    --teal:#5eead4;          /* teal-300 */
+    --teal-bg:rgba(45,212,191,0.10);
+    --teal-line:rgba(94,234,212,0.5);
+    --line:rgba(148,163,184,0.2);
   }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Outfit', sans-serif; background: var(--bg1); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px}
+  ::selection{background:var(--teal);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
 
-  .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35; animation: float 8s ease-in-out infinite; }
-  .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #7c3aed, transparent); top: -200px; left: -200px; animation-delay: 0s; }
-  .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6, transparent); top: 30%; right: -150px; animation-delay: -3s; }
-  .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent); bottom: 10%; left: 20%; animation-delay: -5s; }
-  .orb4 { width: 300px; height: 300px; background: radial-gradient(circle, #06b6d4, transparent); top: 60%; right: 30%; animation-delay: -2s; }
-  @keyframes float { 0%,100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-40px) scale(1.05); } }
+  /* CURSOR SPOTLIGHT */
+  .spotlight{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(600px at var(--x,50%) var(--y,-10%), rgba(45,212,191,0.09), transparent 78%);
+    transition:background .12s ease}
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(13,11,30,0.7); backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 3rem; height: 64px;
+  .main{position:relative;z-index:1;max-width:1152px;margin:0 auto;padding:0 1.5rem}
+
+  /* ============ LEFT COLUMN ============ */
+  .left{padding:5rem 0 0}
+  .name{font-size:clamp(2.4rem,6vw,3rem);font-weight:700;letter-spacing:-0.02em;color:var(--bright);line-height:1.05}
+  .role{margin-top:0.75rem;font-size:clamp(1.1rem,3vw,1.25rem);font-weight:500;color:var(--head)}
+  .tagline{margin-top:1rem;max-width:20rem;color:var(--text);font-weight:300}
+  .tagline .tag-link{color:var(--teal);font-weight:500;border-bottom:1px solid var(--teal-line);transition:.2s}
+  .tagline .tag-link:hover{color:var(--bright);border-color:var(--bright)}
+  .tagline .gur{font-family:'Noto Serif Gurmukhi',serif;color:var(--teal)}
+
+  .avail{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-line);border-radius:20px;padding:0.32rem 0.85rem;margin-bottom:1.2rem}
+  .avail .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;box-shadow:0 0 0 0 rgba(94,234,212,0.6);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(94,234,212,0.6)}70%{box-shadow:0 0 0 9px rgba(94,234,212,0)}100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}}
+  .stats{display:flex;flex-wrap:wrap;gap:1.7rem;margin-top:1.7rem}
+  .stats>div{display:flex;flex-direction:column;gap:0.15rem}
+  .stats .n{font-size:1.5rem;font-weight:700;color:var(--bright);line-height:1;letter-spacing:-0.01em}
+  .stats .l{font-size:0.66rem;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted)}
+
+  .side-nav{display:none}
+  .socials{display:flex;gap:1.3rem;margin-top:2rem}
+  .socials a{color:var(--muted);transition:color .2s,transform .2s;display:inline-flex}
+  .socials a:hover{color:var(--bright);transform:translateY(-2px)}
+
+  /* ============ RIGHT COLUMN ============ */
+  .right{padding:3.5rem 0 4rem}
+  .sec{margin-bottom:3.5rem;scroll-margin-top:2rem}
+  .sec-label{position:sticky;top:0;z-index:5;margin:0 -1.5rem 1.5rem;padding:0.7rem 1.5rem;background:rgba(15,23,42,0.75);backdrop-filter:blur(8px);font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--bright)}
+
+  .prose p{margin-bottom:1rem;font-weight:300}
+  .prose a{color:var(--head);font-weight:500;text-decoration:none;border-bottom:1px solid transparent;transition:.2s}
+  .prose a:hover{color:var(--teal);border-color:var(--teal-line)}
+  .prose b{color:var(--head);font-weight:500}
+
+  .gloss{margin-top:1.4rem;padding:1rem 1.2rem;border-left:2px solid var(--teal);background:var(--bg-soft);border-radius:0 8px 8px 0}
+  .gloss .gur{font-family:'Noto Serif Gurmukhi',serif;font-size:1.35rem;color:var(--head)}
+  .gloss .rom{font-size:0.78rem;color:var(--muted);margin:0.15rem 0 0.5rem}
+  .gloss p{font-size:0.9rem;color:var(--text);font-weight:300;margin:0}
+
+  /* LIST (experience + projects share styling) */
+  .list{display:flex;flex-direction:column;gap:0.5rem}
+  .item{display:grid;grid-template-columns:1fr;gap:0.5rem;padding:1.1rem;border-radius:10px;transition:background .2s,box-shadow .2s,transform .2s;position:relative}
+  .item .when{font-size:0.7rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);padding-top:0.2rem;white-space:nowrap}
+  .item h3{font-size:1rem;font-weight:600;color:var(--head);line-height:1.35;display:inline-flex;align-items:baseline;gap:0.4rem;flex-wrap:wrap}
+  .item h3 .arw{display:inline-block;transition:transform .2s}
+  .item .place{color:var(--head)}
+  .item:hover h3 .place,.item:focus-within h3 .place{color:var(--teal)}
+  .item:hover h3 .arw{transform:translate(3px,-3px)}
+  .item p{font-size:0.9rem;color:var(--text);font-weight:300;margin:0.35rem 0 0.7rem;max-width:60ch}
+  .flag-badge{font-size:0.62rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal-line);border-radius:20px;padding:0.1rem 0.5rem;transform:translateY(-1px)}
+
+  .tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.4rem}
+  .tag{font-size:0.72rem;font-weight:500;color:var(--teal);background:var(--teal-bg);border-radius:20px;padding:0.28rem 0.7rem;line-height:1}
+  .item-links{display:flex;gap:1.2rem;margin-top:0.75rem}
+  .item-links a{font-size:0.8rem;font-weight:500;color:var(--head);display:inline-flex;align-items:center;gap:0.35rem;transition:color .2s}
+  .item-links a:hover{color:var(--teal)}
+
+  .more{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1.4rem;font-weight:600;color:var(--bright);font-size:0.95rem;transition:gap .2s}
+  .more:hover{color:var(--teal);gap:0.85rem}
+
+  /* FEATURED HEADLINE */
+  .feature{position:relative;margin-bottom:3.5rem;padding:1.9rem;border:1px solid var(--teal-line);border-radius:16px;
+    background:linear-gradient(135deg,rgba(45,212,191,0.10),rgba(15,23,42,0.2));overflow:hidden}
+  .feature-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.9rem}
+  .feature-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(94,234,212,0.6);animation:pulse 2.2s infinite}
+  .feature h2{font-size:1.45rem;font-weight:700;color:var(--bright);line-height:1.2;margin-bottom:0.6rem;display:flex;align-items:baseline;gap:0.55rem;flex-wrap:wrap}
+  .feature h2 .gur{font-family:'Noto Serif Gurmukhi',serif;color:var(--teal);font-weight:600}
+  .feature .pitch{color:var(--text);font-weight:300;max-width:46ch;margin-bottom:1.1rem}
+  .feature .pitch b{color:var(--head);font-weight:500}
+  .stat-pills{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.2rem}
+  .stat-pills span{font-size:0.72rem;font-weight:500;color:var(--head);background:rgba(148,163,184,0.1);border:1px solid var(--line);border-radius:20px;padding:0.28rem 0.7rem}
+  .stat-pills b{color:var(--teal);font-weight:600}
+  .feature-cta{display:flex;flex-wrap:wrap;gap:0.8rem}
+  .cta-primary{display:inline-flex;align-items:center;gap:0.45rem;font-size:0.85rem;font-weight:600;color:var(--bg);background:var(--teal);border-radius:6px;padding:0.6rem 1.15rem;transition:.2s}
+  .cta-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,212,191,0.3)}
+  .cta-ghost{display:inline-flex;align-items:center;gap:0.45rem;font-size:0.85rem;font-weight:600;color:var(--teal);border:1px solid var(--teal-line);border-radius:6px;padding:0.6rem 1.15rem;transition:.2s}
+  .cta-ghost:hover{background:var(--teal-bg)}
+
+  /* in-page app preview (swap for a real screenshot anytime) */
+  .phone{width:190px;flex-shrink:0;border-radius:26px;padding:0.5rem;background:#0b1220;border:1px solid rgba(148,163,184,0.25);box-shadow:0 20px 50px rgba(2,12,27,0.6)}
+  .phone-screen{border-radius:20px;background:linear-gradient(160deg,#0f1e2e,#0b1626);padding:1rem 0.85rem;color:var(--head)}
+  .phone-notch{width:42%;height:5px;border-radius:5px;background:rgba(148,163,184,0.3);margin:0.1rem auto 0.9rem}
+  .phone-title{font-family:'Noto Serif Gurmukhi',serif;font-size:1.1rem;color:var(--teal);text-align:center;line-height:1}
+  .phone-sub{font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-align:center;margin:0.25rem 0 0.9rem}
+  .phone-row{margin-bottom:0.6rem}
+  .phone-row .lbl{display:flex;justify-content:space-between;font-size:0.6rem;color:var(--text);margin-bottom:0.22rem}
+  .phone-bar{height:5px;border-radius:5px;background:rgba(148,163,184,0.15);overflow:hidden}
+  .phone-bar i{display:block;height:100%;border-radius:5px;background:var(--teal)}
+  .phone-modes{display:flex;gap:0.3rem;margin-top:0.9rem}
+  .phone-modes span{flex:1;text-align:center;font-size:0.52rem;font-weight:600;color:var(--teal);background:var(--teal-bg);border:1px solid var(--teal-line);border-radius:5px;padding:0.28rem 0.1rem}
+
+  /* VIDEO */
+  .video-frame{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:rgba(2,12,27,0.4);box-shadow:0 24px 60px rgba(2,12,27,0.5)}
+  .video-ratio{position:relative;height:0;padding-bottom:65.02%}
+  .video-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* CONTACT + FOOTER */
+  .contact-lead{max-width:46ch;color:var(--text);font-weight:300;margin-bottom:1.6rem}
+  .contact-lead b{color:var(--head);font-weight:500}
+  .btn{display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.92rem;color:var(--teal);border:1px solid var(--teal-line);border-radius:6px;padding:0.75rem 1.4rem;transition:.2s}
+  .btn:hover{background:var(--teal-bg);transform:translateY(-2px)}
+  .credit{margin-top:3.5rem;font-size:0.8rem;color:var(--muted);font-weight:300;line-height:1.7}
+  .credit a{color:var(--head);font-weight:500}
+  .credit a:hover{color:var(--teal)}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============ DESKTOP TWO-COLUMN ============ */
+  @media(min-width:1024px){
+    .main{display:flex;justify-content:space-between;gap:3rem}
+    .left{position:sticky;top:0;height:100vh;width:44%;max-width:460px;padding:6rem 0;display:flex;flex-direction:column}
+    .right{width:56%;padding:6rem 0}
+    .side-nav{display:block;margin-top:3.5rem}
+    .navlink{display:flex;align-items:center;gap:0.85rem;padding:0.55rem 0;color:var(--muted);cursor:pointer}
+    .navline{width:2rem;height:1px;background:var(--muted);transition:width .2s,background .2s}
+    .navtext{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:color .2s}
+    .navlink:hover .navline,.navlink.active .navline{width:3.75rem;background:var(--bright)}
+    .navlink:hover .navtext,.navlink.active .navtext{color:var(--bright)}
+    .socials{margin-top:auto}
+    .sec-label{display:none}
+    .sec{margin-bottom:5.5rem;scroll-margin-top:6rem}
+    .feature{display:flex;gap:2.2rem;align-items:center;padding:2.3rem}
+    .feature-copy{flex:1;min-width:0}
+    .item{grid-template-columns:8rem 1fr;gap:0.5rem 1.5rem}
+    /* dim siblings, spotlight the hovered row */
+    .list:hover .item{opacity:0.55}
+    .list:hover .item:hover{opacity:1}
+    .item:hover{background:var(--bg-soft);box-shadow:inset 0 1px 0 rgba(148,163,184,0.12),0 8px 30px rgba(2,12,27,0.5);transform:translateY(-2px)}
   }
-  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; text-decoration: none; color: var(--white); background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--white60); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--white); }
-  .nav-links a.active { color: var(--purple-light); }
 
-  .glass { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); border-radius: 16px; }
-  .glass:hover { background: var(--glass-hover); border-color: rgba(124,58,237,0.4); }
-
-  .hero { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 80px 3rem 4rem; max-width: 1200px; margin: 0 auto; }
-  .hero-inner { max-width: 750px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4);
-    color: var(--purple-light); font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.4rem 1.1rem; border-radius: 20px; margin-bottom: 2rem;
-    backdrop-filter: blur(10px);
-  }
-  .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.9)} }
-
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.08; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero h1 em { font-style: italic; }
-  .hero-desc { font-size: 1.1rem; color: var(--white60); line-height: 1.8; max-width: 580px; margin-bottom: 2.5rem; font-weight: 300; }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
-
-  .btn-primary { background: linear-gradient(135deg, var(--purple), var(--blue)); color: white; padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 24px rgba(124,58,237,0.4); }
-  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
-  .btn-glass { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); color: var(--white80); padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: background 0.2s, transform 0.15s; }
-  .btn-glass:hover { background: var(--glass-hover); transform: translateY(-2px); }
-
-  .hero-stats { display: flex; gap: 0; flex-wrap: wrap; }
-  .stat-item { padding: 1.5rem 2.5rem; text-align: center; background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(20px); }
-  .stat-item:first-child { border-radius: 12px 0 0 12px; }
-  .stat-item:last-child { border-radius: 0 12px 12px 0; }
-  .stat-item:not(:last-child) { border-right: none; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
-  .stat-label { font-size: 0.75rem; color: var(--white60); margin-top: 0.2rem; }
-
-  /* QUICK SECTIONS ON HOME */
-  section { position: relative; z-index: 1; padding: 5rem 3rem; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 2rem; color: var(--white); line-height: 1.2; }
-  .sec-title em { font-style: italic; background: linear-gradient(135deg, var(--purple-light), var(--blue-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-  /* FEATURED HIGHLIGHT CARDS */
-  .highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .highlight-card { padding: 2rem; transition: transform 0.2s; text-decoration: none; color: inherit; display: block; }
-  .highlight-card:hover { transform: translateY(-5px); }
-  .highlight-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .highlight-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 0.6rem; }
-  .highlight-desc { font-size: 0.875rem; color: var(--white60); line-height: 1.65; font-weight: 300; }
-  .highlight-cta { font-size: 0.82rem; color: var(--purple-light); margin-top: 1rem; display: block; }
-
-  /* VIDEO SECTION */
-  .video-section { background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.05)); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
-  .video-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .video-container { border-radius: 16px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
-  .video-container > div { border-radius: 16px; overflow: hidden; }
-  .video-text p { font-size: 1rem; color: var(--white60); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
-
-  footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem; font-size: 0.82rem; color: var(--white60); border-top: 1px solid var(--glass-border); }
-  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
-  .footer-links a { color: var(--white60); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--purple-light); }
-
-  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 900px) {
-    nav { padding: 0 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 3rem 1.5rem; }
-    .hero { padding: 80px 1.5rem 4rem; }
-    .highlights-grid { grid-template-columns: 1fr; }
-    .video-wrap { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-stats { flex-direction: column; }
-    .stat-item:first-child { border-radius: 12px 12px 0 0; }
-    .stat-item:last-child { border-radius: 0 0 12px 12px; }
-    .stat-item:not(:last-child) { border-right: 1px solid var(--glass-border); border-bottom: none; }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+    .spotlight{display:none}
   }
 </style>
 </head>
 <body>
-<div class="bg-orbs">
-  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div><div class="orb orb4"></div>
-</div>
 
-<nav>
-  <a href="index.html" class="nav-logo">Sakshi Goel</a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="resume.html">Resume</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+<div class="spotlight" aria-hidden="true"></div>
 
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge">Available · Calgary, AB · Permanent Resident</div>
-    <h1>Sakshi Goel<br><em>.NET Developer</em></h1>
-    <p class="hero-desc">6+ years delivering C#, ASP.NET Core, WPF, Azure, and Python solutions in enterprise environments. Azure-certified. No sponsorship required.</p>
-    <div class="hero-ctas">
-      <a href="projects.html" class="btn-primary">View Projects</a>
-      <a href="contact.html" class="btn-glass">Get in Touch</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item"><span class="stat-num">6+</span><span class="stat-label">Years experience</span></div>
-      <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Azure certifications</span></div>
-      <div class="stat-item"><span class="stat-num">50%</span><span class="stat-label">Diagnostic speed gain</span></div>
-      <div class="stat-item"><span class="stat-num">PR</span><span class="stat-label">No sponsorship needed</span></div>
-    </div>
-  </div>
-</div>
+<div class="main">
 
-<!-- VIDEO SECTION -->
-<section class="video-section">
-  <div class="container">
-    <div class="video-wrap fade-up">
-      <div class="video-text">
-        <div class="eyebrow">Portfolio Walkthrough</div>
-        <h2 class="sec-title">See my work <em>in action</em></h2>
-        <p>Watch a quick walkthrough of my projects, skills, and what I bring to a .NET development team. I cover my live API demo, Azure deployments, and enterprise background.</p>
-        <p>Open to full-time, contract, and hybrid roles in Calgary. Permanent Resident — no sponsorship required.</p>
-        <a href="projects.html" class="btn-primary" style="display:inline-block;margin-top:0.5rem;">Explore Projects →</a>
+  <!-- ============ LEFT ============ -->
+  <header class="left">
+    <div>
+      <span class="avail"><span class="dot"></span>Open to work</span>
+      <h1 class="name"><a href="#top">Sakshi Goel</a></h1>
+      <p class="role">.NET Developer</p>
+      <p class="tagline">Enterprise .NET developer, 6+ years shipping backends and cloud services that scale. Azure-certified, and there's a <a href="#projects" class="tag-link">live .NET 9 API</a> on this page you can call right now.</p>
+      <div class="stats">
+        <div><span class="n">6+</span><span class="l">Years .NET</span></div>
+        <div><span class="n">3×</span><span class="l">Azure certs</span></div>
+        <div><span class="n">Live</span><span class="l">.NET 9 API</span></div>
       </div>
-      <div class="video-container">
-        <div style="position: relative; padding-bottom: 65.01809408926417%; height: 0;">
-          <iframe src="https://www.loom.com/embed/4343e03b8e1b461f8ac184fdd95b633d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+
+      <nav class="side-nav" aria-label="Sections">
+        <a class="navlink active" href="#about"><span class="navline"></span><span class="navtext">About</span></a>
+        <a class="navlink" href="#experience"><span class="navline"></span><span class="navtext">Experience</span></a>
+        <a class="navlink" href="#projects"><span class="navline"></span><span class="navtext">Projects</span></a>
+        <a class="navlink" href="#contact"><span class="navline"></span><span class="navtext">Contact</span></a>
+      </nav>
+    </div>
+
+    <div class="socials">
+      <a href="https://github.com/GoelSakshi742" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/sakshi742/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.76-2.06C20.3 8.64 21 10.9 21 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg>
+      </a>
+      <a href="mailto:ersakshigoel@gmail.com" aria-label="Email" title="Email">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ RIGHT ============ -->
+  <main class="right" id="top">
+
+    <!-- FEATURED HEADLINE -->
+    <div class="feature reveal">
+      <div class="feature-copy">
+        <span class="feature-eyebrow"><span class="dot"></span>Featured project · Live</span>
+        <h2><span class="gur">ਸ਼ਬਦਾਵਲੀ</span> shabdavali-app</h2>
+        <p class="pitch">A <b>live, cross-platform app</b> I built for community interpreters - flashcard training for legal, medical, social-work, and refugee-hearing terminology, on iOS, Android, and the web from one codebase.</p>
+        <div class="stat-pills">
+          <span><b>280</b> terms</span>
+          <span><b>8</b> languages</span>
+          <span><b>4</b> domains</span>
+          <span><b>3</b> study modes</span>
+        </div>
+        <div class="feature-cta">
+          <a class="cta-primary" href="https://goelsakshi742.github.io/shabdavali-app" target="_blank" rel="noopener">Open the live app →</a>
+          <a class="cta-ghost" href="https://github.com/GoelSakshi742/shabdavali-app" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+      <!-- In-page preview. To use a real screenshot instead: replace this .phone block with
+           <img src="YOUR_SCREENSHOT_URL" alt="shabdavali app" style="width:190px;border-radius:22px"> -->
+      <div class="phone" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-title">ਸ਼ਬਦਾਵਲੀ</div>
+          <div class="phone-sub">Interpreter Flashcards</div>
+          <div class="phone-row"><div class="lbl"><span>Legal</span><span>80</span></div><div class="phone-bar"><i style="width:72%"></i></div></div>
+          <div class="phone-row"><div class="lbl"><span>Medical</span><span>110</span></div><div class="phone-bar"><i style="width:90%"></i></div></div>
+          <div class="phone-row"><div class="lbl"><span>Social Work</span><span>50</span></div><div class="phone-bar"><i style="width:48%"></i></div></div>
+          <div class="phone-row"><div class="lbl"><span>IRB / Refugee</span><span>40</span></div><div class="phone-bar"><i style="width:38%"></i></div></div>
+          <div class="phone-modes"><span>Flashcards</span><span>Choice</span><span>Identify</span></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- HIGHLIGHTS -->
-<section>
-  <div class="container">
-    <div class="eyebrow">Explore</div>
-    <h2 class="sec-title">What you'll <em>find here</em></h2>
-    <div class="highlights-grid fade-up">
-      <a href="about.html" class="highlight-card glass">
-        <div class="highlight-icon">👩‍💻</div>
-        <div class="highlight-title">About Me</div>
-        <p class="highlight-desc">My story, background, enterprise experience, and what makes me a strong .NET developer candidate in the Canadian market.</p>
-        <span class="highlight-cta">Read my story →</span>
-      </a>
-      <a href="projects.html" class="highlight-card glass">
-        <div class="highlight-icon">🚀</div>
-        <div class="highlight-title">Projects</div>
-        <p class="highlight-desc">Live .NET 10 REST API, Flask apps, Python data projects, and algorithm solutions — all on GitHub with a live deployment.</p>
-        <span class="highlight-cta">See the work →</span>
-      </a>
-      <a href="resume.html" class="highlight-card glass">
-        <div class="highlight-icon">📄</div>
-        <div class="highlight-title">Resume & Certifications</div>
-        <p class="highlight-desc">6+ years at Mahindra Electric & Schneider Electric. Three Microsoft Azure certifications. IBM Data Analyst Professional.</p>
-        <span class="highlight-cta">View credentials →</span>
-      </a>
-    </div>
-  </div>
-</section>
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+      <div class="sec-label">About</div>
+      <div class="prose reveal">
+        <p>I'm a .NET developer with <b>6+ years</b> delivering enterprise software at companies like <b>Mahindra Electric</b> and <b>Schneider Electric</b>. I'm open to .NET roles, on-site or remote. My work spans C#, ASP.NET Core APIs, WPF desktop apps, SQL Server, Azure, and Python.</p>
+        <p>I hold three Microsoft Azure certifications (AZ-900, AZ-104, AI-900) and recently containerised and deployed a <a href="https://sakshi-apidemo.onrender.com/api/Toy" target="_blank" rel="noopener">live REST API</a> with Docker on Render. I've worked in Agile teams as <b>Scrum Master at Mahindra Electric</b> while leading a group of developers - comfortable coordinating from the front or going deep into backend architecture.</p>
+        <div class="gloss">
+          <div class="gur">ਸ਼ਬਦਾਵਲੀ</div>
+          <div class="rom">shabdāvalī - "vocabulary"</div>
+          <p>I'm also a working Punjabi, Hindi, and English interpreter. One of my projects, shabdavali-app, comes straight out of that world - the two sides of what I do feed each other.</p>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="resume.html">Resume</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  Built by Sakshi Goel · Calgary, AB · 2026
-</footer>
+    <!-- EXPERIENCE -->
+    <section class="sec" id="experience">
+      <div class="sec-label">Experience</div>
+      <div class="list reveal">
+
+        <div class="item">
+          <div class="when">2025 - Now</div>
+          <div>
+            <h3><span class="place">Data Labelling Linguist · Outlier AI</span></h3>
+            <p>Contribute high-quality multilingual data across English, Punjabi, and Hindi to help train and evaluate large language models.</p>
+            <div class="tags"><span class="tag">AI Data</span><span class="tag">Punjabi</span><span class="tag">Hindi</span><span class="tag">Evaluation</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">2025</div>
+          <div>
+            <h3><span class="place">Junior Data Analyst Program · NPower Canada</span></h3>
+            <p>Completed NPower Canada's data analytics training in Calgary, building skills in SQL, Python, and data analysis and visualisation.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Data Analysis</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">2023</div>
+          <div>
+            <h3><span class="place">Software Engineer · Schneider Electric</span></h3>
+            <p>Built and maintained enterprise software as part of the engineering team, working across the C#/.NET stack.</p>
+            <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">SQL Server</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">2017 - 2023</div>
+          <div>
+            <h3><span class="place">Lead Software Developer &amp; Scrum Master · Mahindra Electric</span></h3>
+            <p>Led a team of developers delivering enterprise applications, and served as Scrum Master in an Agile environment - balancing hands-on C#/.NET development with coordination across the team.</p>
+            <div class="tags"><span class="tag">C#</span><span class="tag">WPF</span><span class="tag">.NET</span><span class="tag">SQL Server</span><span class="tag">Agile</span></div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="when">2016</div>
+          <div>
+            <h3><span class="place">Summer Intern · HEI Lille, France</span></h3>
+            <p>Built a JavaFX application during a summer software internship.</p>
+            <div class="tags"><span class="tag">Java</span><span class="tag">JavaFX</span></div>
+          </div>
+        </div>
+
+      </div>
+      <a class="more" href="Sakshi_Goel_Developer_Resume.pdf" target="_blank" rel="noopener">View full résumé (PDF) →</a>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="sec" id="projects">
+      <div class="sec-label">Projects</div>
+      <div class="list reveal">
+
+        <a class="item" href="https://goelsakshi742.github.io/shabdavali-app" target="_blank" rel="noopener">
+          <div class="when">Live · Web</div>
+          <div>
+            <h3><span class="place"><span style="font-family:'Noto Serif Gurmukhi',serif">ਸ਼ਬਦਾਵਲੀ</span> shabdavali-app</span> <span class="arw">↗</span> <span class="flag-badge">Featured</span></h3>
+            <p>A cross-platform flashcard trainer for community interpreters, built because I interpret in these settings myself. 280 built-in terms across Legal, Social Work, Medical, and IRB/Refugee domains - quizzable in 8 languages, with three study modes and offline per-domain progress. Runs on iOS, Android, and the web from one codebase.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">react-native-web</span><span class="tag">JavaScript</span></div>
+            <div class="item-links">
+              <span style="font-size:0.8rem;font-weight:500;color:var(--head)">Live demo</span>
+              <a href="https://github.com/GoelSakshi742/shabdavali-app" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code</a>
+            </div>
+          </div>
+        </a>
+
+        <a class="item" href="https://sakshi-apidemo.onrender.com/api/Toy" target="_blank" rel="noopener">
+          <div class="when">Live · API</div>
+          <div>
+            <h3><span class="place">APIDemo - .NET 9 REST API</span> <span class="arw">↗</span></h3>
+            <p>A production-style RESTful API in ASP.NET Core with Entity Framework Core and SQL Server: full async CRUD, dependency injection, code-first migrations, and correct HTTP semantics. Containerised with Docker and deployed live on Render.</p>
+            <div class="tags"><span class="tag">C#</span><span class="tag">.NET 9</span><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">Docker</span></div>
+            <div class="item-links">
+              <span style="font-size:0.8rem;font-weight:500;color:var(--head)">Live endpoint</span>
+              <a href="https://github.com/GoelSakshi742/APIDemo" target="_blank" rel="noopener" onclick="event.stopPropagation()">Code</a>
+            </div>
+          </div>
+        </a>
+
+        <a class="item" href="https://github.com/GoelSakshi742/cloud-manufacturing-monitoring" target="_blank" rel="noopener">
+          <div class="when">Backend</div>
+          <div>
+            <h3><span class="place">Cloud Manufacturing Monitoring</span> <span class="arw">↗</span></h3>
+            <p>An ASP.NET Core Web API built on clean architecture - separate Domain, Application, Infrastructure, and API layers. Computes machine uptime/downtime and status-timeline metrics from telemetry events, backed by unit tests and documented with Swagger.</p>
+            <div class="tags"><span class="tag">C#</span><span class="tag">Clean Architecture</span><span class="tag">xUnit</span><span class="tag">Swagger</span></div>
+          </div>
+        </a>
+
+        <a class="item" href="https://github.com/GoelSakshi742/laptop-price-analysis" target="_blank" rel="noopener">
+          <div class="when">Data · ML</div>
+          <div>
+            <h3><span class="place">Laptop Price Analysis</span> <span class="arw">↗</span></h3>
+            <p>A Python data project that explores laptop pricing and builds a model to predict price from a machine's specifications - data cleaning, exploratory analysis, and modelling in Jupyter.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Jupyter</span></div>
+          </div>
+        </a>
+
+      </div>
+      <a class="more" href="https://github.com/GoelSakshi742" target="_blank" rel="noopener">See all repositories on GitHub →</a>
+    </section>
+
+    <!-- WALKTHROUGH -->
+    <section class="sec" id="walkthrough">
+      <div class="sec-label">Walkthrough</div>
+      <div class="reveal">
+        <p style="color:var(--text);font-weight:300;max-width:56ch;margin-bottom:1.4rem">A short video where I walk through the projects above - the live .NET 9 API, my Azure deployments, and my enterprise background at Mahindra Electric and Schneider Electric.</p>
+        <div class="video-frame">
+          <div class="video-ratio">
+            <iframe src="https://www.loom.com/embed/4343e03b8e1b461f8ac184fdd95b633d" title="Sakshi Goel - portfolio walkthrough" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+      <div class="sec-label">Contact</div>
+      <div class="reveal">
+        <p class="contact-lead">I'm open to <b>full-time .NET developer roles</b>. The quickest way to reach me is email.</p>
+        <a class="btn" href="mailto:ersakshigoel@gmail.com">Say hello →</a>
+        <p class="credit">
+          Built by Sakshi Goel. Type set in <a href="https://rsms.me/inter/" target="_blank" rel="noopener">Inter</a>.
+          Layout inspired by <a href="https://brittanychiang.com/" target="_blank" rel="noopener">Brittany Chiang</a>.
+          Source on <a href="https://github.com/GoelSakshi742" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</div>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  // Cursor-following spotlight
+  const spot = document.querySelector('.spotlight');
+  if (matchMedia('(pointer:fine)').matches) {
+    addEventListener('mousemove', (e) => {
+      spot.style.setProperty('--x', e.clientX + 'px');
+      spot.style.setProperty('--y', e.clientY + 'px');
+    }, {passive:true});
+  }
+
+  // Scroll reveal
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Scroll-spy for the left nav
+  const navlinks = [...document.querySelectorAll('.navlink')];
+  const targets = navlinks.map(l=>document.querySelector(l.getAttribute('href')));
+  const spy = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const i = targets.indexOf(entry.target);
+        navlinks.forEach(l=>l.classList.remove('active'));
+        if(navlinks[i]) navlinks[i].classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  targets.forEach(t=>{ if(t) spy.observe(t); });
 </script>
- <script src="visitor-tracker.js" defer></script>
 </body>
 </html>
