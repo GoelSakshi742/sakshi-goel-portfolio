@@ -209,6 +209,21 @@
       "viewport": "1920x1080",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.7444.175 Safari/537.36",
       "visitor": "86a6a3aa00fd"
+    },
+    {
+      "ts": "2026-08-17T22:47:22.295Z",
+      "page": "/sakshi-goel-portfolio/",
+      "title": "Sakshi Goel — .NET Developer",
+      "referrer": "https://github.com/",
+      "country": "GB",
+      "region": "Scotland",
+      "city": "Edinburgh",
+      "timezone": "America/Edmonton",
+      "language": "en-CA",
+      "screen": "402x874",
+      "viewport": "402x678",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_6_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/433.5.957829776 Mobile/15E148 Safari/604.1",
+      "visitor": "37befdf10679"
     }
   ]
 }
